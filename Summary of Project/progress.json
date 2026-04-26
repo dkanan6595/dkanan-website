@@ -1,0 +1,10 @@
+{
+  "hosting": "completed",
+  "ui": "completed",
+  "firebase_setup": "completed",
+  "auth": "pending",
+  "database": "pending",
+  "chat": "pending",
+  "marketplace": "pending",
+  "api_integration": "pending"
+}

@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DKANAN | Premium Art Ecosystem</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="nav-left">
+    <a href="#" onclick="showSection('home')" class="logo-link">
+      <img src="assets/logo_bight_colour.png" class="logo" alt="DKANAN">
+    </a>
+  </div>
+
+  <nav class="nav-right">
+    <a href="#" onclick="showSection('home')">Home</a>
+    <a href="#" onclick="showSection('exhibition')">Exhibition</a>
+    <a href="#" onclick="showSection('marketplace')">Marketplace</a>
+    <a href="#" onclick="showSection('community')">Community</a>
+    <a href="#" onclick="showSection('news')">News</a>
+    <a href="#" onclick="showSection('commissions')">Commissions</a>
+    <a href="#" onclick="showSection('jobs')">Jobs</a>
+    <a href="#" onclick="showSection('membership')" class="membership-link"><i class="fas fa-crown"></i> Membership</a>
+    <a href="#" onclick="toggleAIAssistant()" class="ai-btn"><i class="fas fa-robot"></i> AI</a>
+    <span id="authButtons">
+      <a href="#" class="login-btn" onclick="openAuthModal('login')">Login</a>
+      <a href="#" class="signup-btn" onclick="openAuthModal('signup')">Sign Up</a>
+    </span>
+    <a href="#" class="logout-btn" onclick="logoutUser()" style="display:none;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <a href="#" onclick="showSection('profile')" class="profile-btn" style="display:none;"><img id="navProfileImg" src="assets/default-avatar.png" class="nav-avatar"></a>
+  </nav>
+  
+  <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+<section id="homeSection" class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Premium Art Ecosystem</div>
+    <h1>DKANAN</h1>
+    <p class="hero-tagline">Where Art Meets Opportunity</p>
+    <p class="hero-desc">
+      Connect with artists, buyers, and creators worldwide. 
+      Showcase your work, build connections, and grow your creative business.
+    </p>
+    
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">50K+</span>
+        <span class="stat-label">Artists</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">120K+</span>
+        <span class="stat-label">Artworks</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">25K+</span>
+        <span class="stat-label">Buyers</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">$2M+</span>
+        <span class="stat-label">Sales</span>
+      </div>
+    </div>
+    
+    <div class="hero-buttons">
+      <button class="primary-btn" onclick="openAuthModal('signup')">
+        <i class="fas fa-palette"></i> Join as Artist
+      </button>
+      <button class="secondary-btn" onclick="openAuthModal('signup')">
+        <i class="fas fa-shopping-bag"></i> Explore Marketplace
+      </button>
+    </div>
+    
+    <div class="hero-scroll">
+      <span>Scroll to explore</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ROLE SELECTION BANNER ================= -->
+<section class="role-banner">
+  <div class="role-container">
+    <div class="role-card" onclick="openAuthModal('signup')">
+      <i class="fas fa-palette"></i>
+      <h3>Artist</h3>
+      <p>Showcase & sell your art</p>
+    </div>
+    <div class="role-card" onclick="openAuthModal('signup')">
+      <i class="fas fa-lightbulb"></i>
+      <h3>Creator</h3>
+      <p>Collaborate & create</p>
+    </div>
+    <div class="role-card" onclick="openAuthModal('signup')">
+      <i class="fas fa-shopping-cart"></i>
+      <h3>Buyer</h3>
+      <p>Discover & collect art</p>
+    </div>
+    <div class="role-card" onclick="showSection('home')">
+      <i class="fas fa-eye"></i>
+      <h3>Visitor</h3>
+      <p>Browse & explore</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXHIBITION SECTION ================= -->
+<section id="exhibitionSection" class="section-container" style="display:none;">
+  <div class="section-header">
+    <h2><i class="fas fa-gem"></i> Virtual Exhibition</h2>
+    <p>Curated collections from top artists worldwide</p>
+  </div>
+  
+  <div class="exhibition-filters">
+    <button class="filter-btn active" onclick="filterExhibition('all')">All</button>
+    <button class="filter-btn" onclick="filterExhibition('painting')">Paintings</button>
+    <button class="filter-btn" onclick="filterExhibition('digital')">Digital Art</button>
+    <button class="filter-btn" onclick="filterExhibition('sculpture')">Sculptures</button>
+    <button class="filter-btn" onclick="filterExhibition('photography')">Photography</button>
+  </div>
+  
+  <div class="exhibition-grid" id="exhibitionGrid">
+    <div class="exhibition-item" data-category="painting">
+      <div class="exhibition-image">
+        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=400" alt="Artwork">
+        <div class="exhibition-overlay">
+          <button class="view-btn"><i class="fas fa-eye"></i> View</button>
+          <button class="like-btn"><i class="fas fa-heart"></i></button>
+        </div>
+      </div>
+      <div class="exhibition-info">
+        <h4>Abstract Dreams</h4>
+        <p class="artist-name">by Sarah Mitchell</p>
+        <div class="exhibition-meta">
+          <span class="price">$2,500</span>
+          <span class="likes"><i class="fas fa-heart"></i> 234</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="exhibition-item" data-category="digital">
+      <div class="exhibition-image">
+        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400" alt="Artwork">
+        <div class="exhibition-overlay">
+          <button class="view-btn"><i class="fas fa-eye"></i> View</button>
+          <button class="like-btn"><i class="fas fa-heart"></i></button>
+        </div>
+      </div>
+      <div class="exhibition-info">
+        <h4>Digital Horizons</h4>
+        <p class="artist-name">by Alex Chen</p>
+        <div class="exhibition-meta">
+          <span class="price">$800</span>
+          <span class="likes"><i class="fas fa-heart"></i> 189</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="exhibition-item" data-category="sculpture">
+      <div class="exhibition-image">
+        <img src="https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=400" alt="Artwork">
+        <div class="exhibition-overlay">
+          <button class="view-btn"><i class="fas fa-eye"></i> View</button>
+          <button class="like-btn"><i class="fas fa-heart"></i></button>
+        </div>
+      </div>
+      <div class="exhibition-info">
+        <h4>Modern Form</h4>
+        <p class="artist-name">by Marco Rossi</p>
+        <div class="exhibition-meta">
+          <span class="price">$5,200</span>
+          <span class="likes"><i class="fas fa-heart"></i> 156</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="exhibition-item" data-category="photography">
+      <div class="exhibition-image">
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400" alt="Artwork">
+        <div class="exhibition-overlay">
+          <button class="view-btn"><i class="fas fa-eye"></i> View</button>
+          <button class="like-btn"><i class="fas fa-heart"></i></button>
+        </div>
+      </div>
+      <div class="exhibition-info">
+        <h4>Urban Light</h4>
+        <p class="artist-name">by Emma Wilson</p>
+        <div class="exhibition-meta">
+          <span class="price">$450</span>
+          <span class="likes"><i class="fas fa-heart"></i> 312</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="exhibition-item" data-category="painting">
+      <div class="exhibition-image">
+        <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=400" alt="Artwork">
+        <div class="exhibition-overlay">
+          <button class="view-btn"><i class="fas fa-eye"></i> View</button>
+          <button class="like-btn"><i class="fas fa-heart"></i></button>
+        </div>
+      </div>
+      <div class="exhibition-info">
+        <h4>Sunset Symphony</h4>
+        <p class="artist-name">by James Brown</p>
+        <div class="exhibition-meta">
+          <span class="price">$3,100</span>
+          <span class="likes"><i class="fas fa-heart"></i> 278</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="exhibition-item" data-category="digital">
+      <div class="exhibition-image">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400" alt="Artwork">
+        <div class="exhibition-overlay">
+          <button class="view-btn"><i class="fas fa-eye"></i> View</button>
+          <button class="like-btn"><i class="fas fa-heart"></i></button>
+        </div>
+      </div>
+      <div class="exhibition-info">
+        <h4>Neon Dreams</h4>
+        <p class="artist-name">by Lisa Park</p>
+        <div class="exhibition-meta">
+          <span class="price">$1,200</span>
+          <span class="likes"><i class="fas fa-heart"></i> 445</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARKETPLACE SECTION ================= -->
+<section id="marketplaceSection" class="section-container" style="display:none;">
+  <div class="section-header">
+    <h2><i class="fas fa-store"></i> Art Marketplace</h2>
+    <p>Buy and sell original artworks, prints, and commissions</p>
+  </div>
+  
+  <div class="marketplace-filters">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search artworks..." id="marketplaceSearch">
+    </div>
+    <select class="filter-select" onchange="filterMarketplace(this.value)">
+      <option value="all">All Categories</option>
+      <option value="painting">Paintings</option>
+      <option value="digital">Digital Art</option>
+      <option value="sculpture">Sculptures</option>
+      <option value="photography">Photography</option>
+      <option value="illustration">Illustrations</option>
+    </select>
+    <select class="filter-select" onchange="sortMarketplace(this.value)">
+      <option value="popular">Most Popular</option>
+      <option value="newest">Newest First</option>
+      <option value="price-low">Price: Low to High</option>
+      <option value="price-high">Price: High to Low</option>
+    </select>
+  </div>
+  
+  <div class="marketplace-grid" id="marketplaceGrid">
+    <div class="marketplace-card">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=400" alt="Artwork">
+        <span class="badge-new">New</span>
+        <div class="card-actions">
+          <button class="action-btn" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+          <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-cart"></i></button>
+          <button class="action-btn" title="Share"><i class="fas fa-share"></i></button>
+        </div>
+      </div>
+      <div class="card-content">
+        <h4>Golden Sunset</h4>
+        <p class="artist">by Maria Garcia</p>
+        <div class="card-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>(48)</span>
+        </div>
+        <div class="card-price">
+          <span class="current-price">$1,850</span>
+          <span class="original-price">$2,200</span>
+        </div>
+        <button class="buy-btn" onclick="openArtworkDetail(1)">View Details</button>
+      </div>
+    </div>
+    
+    <div class="marketplace-card">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1582201942988-13e60e4556ee?w=400" alt="Artwork">
+        <div class="card-actions">
+          <button class="action-btn" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+          <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-cart"></i></button>
+          <button class="action-btn" title="Share"><i class="fas fa-share"></i></button>
+        </div>
+      </div>
+      <div class="card-content">
+        <h4>Ocean Whispers</h4>
+        <p class="artist">by David Kim</p>
+        <div class="card-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>(126)</span>
+        </div>
+        <div class="card-price">
+          <span class="current-price">$950</span>
+        </div>
+        <button class="buy-btn" onclick="openArtworkDetail(2)">View Details</button>
+      </div>
+    </div>
+    
+    <div class="marketplace-card">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?w=400" alt="Artwork">
+        <span class="badge-featured">Featured</span>
+        <div class="card-actions">
+          <button class="action-btn" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+          <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-cart"></i></button>
+          <button class="action-btn" title="Share"><i class="fas fa-share"></i></button>
+        </div>
+      </div>
+      <div class="card-content">
+        <h4>Abstract Flow</h4>
+        <p class="artist">by Nina Anderson</p>
+        <div class="card-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+          <span>(89)</span>
+        </div>
+        <div class="card-price">
+          <span class="current-price">$2,400</span>
+        </div>
+        <button class="buy-btn" onclick="openArtworkDetail(3)">View Details</button>
+      </div>
+    </div>
+    
+    <div class="marketplace-card">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?w=400" alt="Artwork">
+        <div class="card-actions">
+          <button class="action-btn" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+          <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-cart"></i></button>
+          <button class="action-btn" title="Share"><i class="fas fa-share"></i></button>
+        </div>
+      </div>
+      <div class="card-content">
+        <h4>Cosmic Journey</h4>
+        <p class="artist">by Tom Richards</p>
+        <div class="card-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>(203)</span>
+        </div>
+        <div class="card-price">
+          <span class="current-price">$3,500</span>
+        </div>
+        <button class="buy-btn" onclick="openArtworkDetail(4)">View Details</button>
+      </div>
+    </div>
+    
+    <div class="marketplace-card">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=400" alt="Artwork">
+        <span class="badge-sale">-20%</span>
+        <div class="card-actions">
+          <button class="action-btn" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+          <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-cart"></i></button>
+          <button class="action-btn" title="Share"><i class="fas fa-share"></i></button>
+        </div>
+      </div>
+      <div class="card-content">
+        <h4>Urban Dreams</h4>
+        <p class="artist">by Sophie Turner</p>
+        <div class="card-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <i class="far fa-star"></i>
+          <span>(67)</span>
+        </div>
+        <div class="card-price">
+          <span class="current-price">$1,200</span>
+          <span class="original-price">$1,500</span>
+        </div>
+        <button class="buy-btn" onclick="openArtworkDetail(5)">View Details</button>
+      </div>
+    </div>
+    
+    <div class="marketplace-card">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400" alt="Artwork">
+        <div class="card-actions">
+          <button class="action-btn" title="Add to Wishlist"><i class="fas fa-heart"></i></button>
+          <button class="action-btn" title="Add to Cart"><i class="fas fa-shopping-cart"></i></button>
+          <button class="action-btn" title="Share"><i class="fas fa-share"></i></button>
+        </div>
+      </div>
+      <div class="card-content">
+        <h4>Mountain Serenity</h4>
+        <p class="artist">by John Miller</p>
+        <div class="card-rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>(156)</span>
+        </div>
+        <div class="card-price">
+          <span class="current-price">$2,800</span>
+        </div>
+        <button class="buy-btn" onclick="openArtworkDetail(6)">View Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMMUNITY SECTION ================= -->
+<section id="communitySection" class="section-container" style="display:none;">
+  <div class="section-header">
+    <h2><i class="fas fa-users"></i> Artist Community</h2>
+    <p>Connect, collaborate, and grow with fellow artists</p>
+  </div>
+  
+  <div class="community-tabs">
+    <button class="tab-btn active" onclick="showCommunityTab('feed')">Feed</button>
+    <button class="tab-btn" onclick="showCommunityTab('discussions')">Discussions</button>
+    <button class="tab-btn" onclick="showCommunityTab('events')">Events</button>
+    <button class="tab-btn" onclick="showCommunityTab('groups')">Groups</button>
+  </div>
+  
+  <div class="community-content">
+    <div id="feedTab" class="community-tab active">
+      <div class="create-post">
+        <img src="assets/default-avatar.png" class="post-avatar" id="userPostAvatar">
+        <div class="post-input-container">
+          <textarea placeholder="Share your creative journey..." id="postContent"></textarea>
+          <div class="post-actions">
+            <button class="post-action"><i class="fas fa-image"></i> Photo</button>
+            <button class="post-action"><i class="fas fa-video"></i> Video</button>
+            <button class="post-action"><i class="fas fa-link"></i> Link</button>
+            <button class="post-submit" onclick="createPost()">Post</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="feed-posts" id="feedPosts">
+        <div class="post-card">
+          <div class="post-header">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="post-author-img">
+            <div class="post-author-info">
+              <h4>Emma Richardson</h4>
+              <span class="post-meta">2 hours ago • <span class="role-badge artist">Artist</span></span>
+            </div>
+            <button class="post-menu"><i class="fas fa-ellipsis-h"></i></button>
+          </div>
+          <div class="post-content-text">
+            Just completed this new piece! 🎨 It's a mixed media exploration of urban isolation and connection. What do you think?
+          </div>
+          <div class="post-media">
+            <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=600" alt="Artwork">
+          </div>
+          <div class="post-stats">
+            <span><i class="fas fa-heart"></i> 234</span>
+            <span><i class="fas fa-comment"></i> 45</span>
+            <span><i class="fas fa-share"></i> 12</span>
+          </div>
+          <div class="post-actions-bar">
+            <button class="action-like"><i class="far fa-heart"></i> Like</button>
+            <button class="action-comment"><i class="far fa-comment"></i> Comment</button>
+            <button class="action-share"><i class="far fa-share-square"></i> Share</button>
+          </div>
+        </div>
+        
+        <div class="post-card">
+          <div class="post-header">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="post-author-img">
+            <div class="post-author-info">
+              <h4>Marcus Chen</h4>
+              <span class="post-meta">5 hours ago • <span class="role-badge creator">Creator</span></span>
+            </div>
+            <button class="post-menu"><i class="fas fa-ellipsis-h"></i></button>
+          </div>
+          <div class="post-content-text">
+            Excited to announce my collaboration with @sarah_art! We're working on a series of digital sculptures that blend classical forms with futuristic aesthetics. Stay tuned! 🚀
+          </div>
+          <div class="post-media">
+            <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600" alt="Artwork">
+          </div>
+          <div class="post-stats">
+            <span><i class="fas fa-heart"></i> 567</span>
+            <span><i class="fas fa-comment"></i> 89</span>
+            <span><i class="fas fa-share"></i> 34</span>
+          </div>
+          <div class="post-actions-bar">
+            <button class="action-like"><i class="far fa-heart"></i> Like</button>
+            <button class="action-comment"><i class="far fa-comment"></i> Comment</button>
+            <button class="action-share"><i class="far fa-share-square"></i> Share</button>
+          </div>
+        </div>
+        
+        <div class="post-card">
+          <div class="post-header">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="post-author-img">
+            <div class="post-author-info">
+              <h4>Isabella Martinez</h4>
+              <span class="post-meta">1 day ago • <span class="role-badge buyer">Buyer</span></span>
+            </div>
+            <button class="post-menu"><i class="fas fa-ellipsis-h"></i></button>
+          </div>
+          <div class="post-content-text">
+            Just added this beautiful piece to my collection! Can't wait to see it hang in my living room. The artist @davidkim_art was amazing to work with! 🖼️
+          </div>
+          <div class="post-media">
+            <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=600" alt="Artwork">
+          </div>
+          <div class="post-stats">
+            <span><i class="fas fa-heart"></i> 189</span>
+            <span><i class="fas fa-comment"></i> 23</span>
+            <span><i class="fas fa-share"></i> 8</span>
+          </div>
+          <div class="post-actions-bar">
+            <button class="action-like"><i class="far fa-heart"></i> Like</button>
+            <button class="action-comment"><i class="far fa-comment"></i> Comment</button>
+            <button class="action-share"><i class="far fa-share-square"></i> Share</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="discussionsTab" class="community-tab">
+      <div class="discussion-list">
+        <div class="discussion-item">
+          <div class="discussion-icon"><i class="fas fa-question-circle"></i></div>
+          <div class="discussion-content">
+            <h4>How do you price your artwork?</h4>
+            <p>Discussion about pricing strategies for emerging artists...</p>
+            <span class="discussion-meta">234 replies • 1.2K views</span>
+          </div>
+        </div>
+        <div class="discussion-item">
+          <div class="discussion-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="discussion-content">
+            <h4>Best platforms for selling digital art?</h4>
+            <p>Sharing experiences with different marketplaces...</p>
+            <span class="discussion-meta">189 replies • 980 views</span>
+          </div>
+        </div>
+        <div class="discussion-item">
+          <div class="discussion-icon"><i class="fas fa-palette"></i></div>
+          <div class="discussion-content">
+            <h4>Weekly Art Challenge: Nature</h4>
+            <p>This week's theme is "Nature" - share your interpretations!</p>
+            <span class="discussion-meta">456 replies • 2.3K views</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="eventsTab" class="community-tab">
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-date">
+            <span class="event-day">15</span>
+            <span class="event-month">May</span>
+          </div>
+          <div class="event-details">
+            <h4>Virtual Gallery Opening</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Online Event</p>
+            <p><i class="fas fa-clock"></i> 7:00 PM EST</p>
+            <button class="event-join">RSVP</button>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date">
+            <span class="event-day">22</span>
+            <span class="event-month">May</span>
+          </div>
+          <div class="event-details">
+            <h4>Live Art Workshop</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Online Event</p>
+            <p><i class="fas fa-clock"></i> 2:00 PM EST</p>
+            <button class="event-join">RSVP</button>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-date">
+            <span class="event-day">28</span>
+            <span class="event-month">May</span>
+          </div>
+          <div class="event-details">
+            <h4>Artist Networking Night</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Online Event</p>
+            <p><i class="fas fa-clock"></i> 6:00 PM EST</p>
+            <button class="event-join">RSVP</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="groupsTab" class="community-tab">
+      <div class="groups-grid">
+        <div class="group-card">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=300" alt="Group">
+          <div class="group-info">
+            <h4>Digital Artists</h4>
+            <p>12.5K members</p>
+            <button class="join-group">Join</button>
+          </div>
+        </div>
+        <div class="group-card">
+          <img src="https://images.unsplash.com/photo-1549887534-1541e9326642?w=300" alt="Group">
+          <div class="group-info">
+            <h4>Traditional Painters</h4>
+            <p>8.3K members</p>
+            <button class="join-group">Join</button>
+          </div>
+        </div>
+        <div class="group-card">
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=300" alt="Group">
+          <div class="group-info">
+            <h4>Photographers</h4>
+            <p>15.2K members</p>
+            <button class="join-group">Join</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEWS SECTION ================= -->
+<section id="newsSection" class="section-container" style="display:none;">
+  <div class="section-header">
+    <h2><i class="fas fa-newspaper"></i> Art News</h2>
+    <p>Latest updates from the art world</p>
+  </div>
+  
+  <div class="news-filters">
+    <button class="news-filter active">All</button>
+    <button class="news-filter">Exhibitions</button>
+    <button class="news-filter">Auctions</button>
+    <button class="news-filter">Artists</button>
+    <button class="news-filter">Market Trends</button>
+  </div>
+  
+  <div class="news-grid">
+    <div class="news-featured">
+      <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800" alt="News">
+      <div class="news-featured-content">
+        <span class="news-category">Exhibition</span>
+        <h3>Major Art Fair Announces 2026 Lineup</h3>
+        <p>The world's most prestigious art fair reveals its biggest exhibition yet...</p>
+        <span class="news-date">2 hours ago</span>
+      </div>
+    </div>
+    
+    <div class="news-list">
+      <div class="news-item">
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=150" alt="News">
+        <div class="news-item-content">
+          <span class="news-category">Market</span>
+          <h4>Contemporary Art Prices Surge</h4>
+          <p>New report shows 25% growth in digital art market...</p>
+          <span class="news-date">5 hours ago</span>
+        </div>
+      </div>
+      
+      <div class="news-item">
+        <img src="https://images.unsplash.com/photo-1549887534-1541e9326642?w=150" alt="News">
+        <div class="news-item-content">
+          <span class="news-category">Artist</span>
+          <h4>Emerging Artist Breaks Record</h4>
+          <p>Young painter sells debut work for $500K...</p>
+          <span class="news-date">1 day ago</span>
+        </div>
+      </div>
+      
+      <div class="news-item">
+        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=150" alt="News">
+        <div class="news-item-content">
+          <span class="news-category">Technology</span>
+          <h4>AI Art Debate Continues</h4>
+          <p>Gallery associations weigh in on AI-generated artwork...</p>
+          <span class="news-date">2 days ago</span>
+        </div>
+      </div>
+      
+      <div class="news-item">
+        <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=150" alt="News">
+        <div class="news-item-content">
+          <span class="news-category">Auction</span>
+          <h4>Classic Works Fetch High Prices</h4>
+          <p>Christie's auction sees strong bidding...</p>
+          <span class="news-date">3 days ago</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMMISSIONS SECTION ================= -->
+<section id="commissionsSection" class="section-container" style="display:none;">
+  <div class="section-header">
+    <h2><i class="fas fa-paint-brush"></i> Commissions & Tenders</h2>
+    <p>Find commission work or post your own requests</p>
+  </div>
+  
+  <div class="commissions-tabs">
+    <button class="tab-btn active" onclick="showCommissionsTab('open')">Open Commissions</button>
+    <button class="tab-btn" onclick="showCommissionsTab('requests')">Requests</button>
+    <button class="tab-btn" onclick="showCommissionsTab('tenders')">Tenders</button>
+  </div>
+  
+  <div class="commissions-content">
+    <div id="openCommissions" class="commissions-tab active">
+      <div class="commission-card">
+        <div class="commission-header">
+          <img src="https://randomuser.me/api/portraits/men/45.jpg" class="commission-avatar">
+          <div class="commission-info">
+            <h4>Portrait Commission Needed</h4>
+            <p>by Michael Thompson</p>
+            <span class="commission-budget">Budget: $500 - $800</span>
+          </div>
+          <span class="commission-status open">Open</span>
+        </div>
+        <div class="commission-details">
+          <p>Looking for an artist to create a family portrait in oil. Size: 24x36 inches. Must be able to work from photos.</p>
+        </div>
+        <div class="commission-tags">
+          <span>Oil Painting</span>
+          <span>Portrait</span>
+          <span>Traditional</span>
+        </div>
+        <div class="commission-footer">
+          <span><i class="fas fa-clock"></i> 5 days left</span>
+          <span><i class="fas fa-users"></i> 12 proposals</span>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+      </div>
+      
+      <div class="commission-card">
+        <div class="commission-header">
+          <img src="https://randomuser.me/api/portraits/women/33.jpg" class="commission-avatar">
+          <div class="commission-info">
+            <h4>Logo Design for Art Gallery</h4>
+            <p>by Gallery Nova</p>
+            <span class="commission-budget">Budget: $300 - $500</span>
+          </div>
+          <span class="commission-status open">Open</span>
+        </div>
+        <div class="commission-details">
+          <p>Need a modern, minimalist logo for a contemporary art gallery. Vector format required. Should work in both color and black & white.</p>
+        </div>
+        <div class="commission-tags">
+          <span>Logo Design</span>
+          <span>Digital</span>
+          <span>Branding</span>
+        </div>
+        <div class="commission-footer">
+          <span><i class="fas fa-clock"></i> 7 days left</span>
+          <span><i class="fas fa-users"></i> 28 proposals</span>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+      </div>
+      
+      <div class="commission-card">
+        <div class="commission-header">
+          <img src="https://randomuser.me/api/portraits/men/67.jpg" class="commission-avatar">
+          <div class="commission-info">
+            <h4>Mural for Restaurant</h4>
+            <p>by Bistro Central</p>
+            <span class="commission-budget">Budget: $2,000 - $3,500</span>
+          </div>
+          <span class="commission-status open">Open</span>
+        </div>
+        <div class="commission-details">
+          <p>Looking for a talented mural artist to create an abstract piece for our restaurant. Wall size: 8x12 feet. Style: Modern abstract.</p>
+        </div>
+        <div class="commission-tags">
+          <span>Mural</span>
+          <span>Abstract</span>
+          <span>Large Scale</span>
+        </div>
+        <div class="commission-footer">
+          <span><i class="fas fa-clock"></i> 12 days left</span>
+          <span><i class="fas fa-users"></i> 8 proposals</span>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="requestsTab" class="commissions-tab">
+      <div class="create-commission">
+        <h3>Post a Commission Request</h3>
+        <form class="commission-form">
+          <input type="text" placeholder="Title" class="form-input">
+          <textarea placeholder="Describe your commission request..." class="form-textarea"></textarea>
+          <div class="form-row">
+            <input type="text" placeholder="Budget (min)" class="form-input">
+            <input type="text" placeholder="Budget (max)" class="form-input">
+          </div>
+          <select class="form-select">
+            <option>Category</option>
+            <option>Painting</option>
+            <option>Digital Art</option>
+            <option>Illustration</option>
+            <option>Photography</option>
+            <option>Other</option>
+          </select>
+          <button type="button" class="submit-commission">Post Request</button>
+        </form>
+      </div>
+    </div>
+    
+    <div id="tendersTab" class="commissions-tab">
+      <div class="tender-card">
+        <div class="tender-header">
+          <h4>Public Art Project - City Plaza</h4>
+          <span class="tender-deadline">Deadline: June 15, 2026</span>
+        </div>
+        <p>The City of Arts is seeking proposals for a permanent sculpture installation in the downtown plaza. Budget: $50,000 - $100,000.</p>
+        <button class="tender-btn">View Details</button>
+      </div>
+      
+      <div class="tender-card">
+        <div class="tender-header">
+          <h4>Hotel Chain Art Collection</h4>
+          <span class="tender-deadline">Deadline: June 30, 2026</span>
+        </div>
+        <p>Luxury hotel chain seeking 50+ artworks for new property. Various styles needed - modern, abstract, and contemporary.</p>
+        <button class="tender-btn">View Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOBS SECTION ================= -->
+<section id="jobsSection" class="section-container" style="display:none;">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Job Opportunities</h2>
+    <p>Find your next creative role</p>
+  </div>
+  
+  <div class="jobs-filters">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search jobs...">
+    </div>
+    <select class="filter-select">
+      <option>All Locations</option>
+      <option>Remote</option>
+      <option>New York</option>
+      <option>London</option>
+      <option>Paris</option>
+      <option>Tokyo</option>
+    </select>
+    <select class="filter-select">
+      <option>All Types</option>
+      <option>Full-time</option>
+      <option>Part-time</option>
+      <option>Contract</option>
+      <option>Freelance</option>
+    </select>
+  </div>
+  
+  <div class="jobs-list">
+    <div class="job-card">
+      <div class="job-company">
+        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Company">
+        <div>
+          <h4>Senior Illustrator</h4>
+          <p>Creative Studios Inc.</p>
+        </div>
+      </div>
+      <div class="job-details">
+        <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+        <span><i class="fas fa-clock"></i> Full-time</span>
+        <span><i class="fas fa-dollar-sign"></i> $80K - $120K</span>
+      </div>
+      <p class="job-desc">We're looking for an experienced illustrator to join our creative team. Must have strong portfolio and experience in editorial illustration.</p>
+      <div class="job-footer">
+        <span class="job-posted">Posted 2 days ago</span>
+        <button class="apply-btn">Apply</button>
+      </div>
+    </div>
+    
+    <div class="job-card">
+      <div class="job-company">
+        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Company">
+        <div>
+          <h4>Art Director</h4>
+          <p>Design House Global</p>
+        </div>
+      </div>
+      <div class="job-details">
+        <span><i class="fas fa-map-marker-alt"></i> New York, NY</span>
+        <span><i class="fas fa-clock"></i> Full-time</span>
+        <span><i class="fas fa-dollar-sign"></i> $100K - $150K</span>
+      </div>
+      <p class="job-desc">Lead creative direction for major brand campaigns. 5+ years experience required.</p>
+      <div class="job-footer">
+        <span class="job-posted">Posted 5 days ago</span>
+        <button class="apply-btn">Apply</button>
+      </div>
+    </div>
+    
+    <div class="job-card">
+      <div class="job-company">
+        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Company">
+        <div>
+          <h4>3D Artist</h4>
+          <p>GameForge Studios</p>
+        </div>
+      </div>
+      <div class="job-details">
+        <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+        <span><i class="fas fa-clock"></i> Contract</span>
+        <span><i class="fas fa-dollar-sign"></i> $60 - $80/hr</span>
+      </div>
+      <p class="job-desc">Create stunning 3D assets for upcoming game title. Experience with Unreal Engine preferred.</p>
+      <div class="job-footer">
+        <span class="job-posted">Posted 1 week ago</span>
+        <button class="apply-btn">Apply</button>
+      </div>
+    </div>
+    
+    <div class="job-card">
+      <div class="job-company">
+        <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="Company">
+        <div>
+          <h4>Gallery Curator</h4>
+          <p>Modern Art Museum</p>
+        </div>
+      </div>
+      <div class="job-details">
+        <span><i class="fas fa-map-marker-alt"></i> London, UK</span>
+        <span><i class="fas fa-clock"></i> Full-time</span>
+        <span><i class="fas fa-dollar-sign"></i> £45K - £65K</span>
+      </div>
+      <p class="job-desc">Curate exhibitions and manage collection. Art history degree and 3+ years gallery experience required.</p>
+      <div class="job-footer">
+        <span class="job-posted">Posted 3 days ago</span>
+        <button class="apply-btn">Apply</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROFILE SECTION ================= -->
+<section id="profileSection" class="section-container" style="display:none;">
+  <div class="profile-header">
+    <div class="profile-cover">
+      <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=1200" alt="Cover">
+    </div>
+    <div class="profile-info">
+      <img src="assets/default-avatar.png" class="profile-avatar" id="profileAvatar">
+      <div class="profile-details">
+        <h2 id="profileName">Your Name</h2>
+        <p class="profile-role" id="profileRole">Artist</p>
+        <p class="profile-bio" id="profileBio">Creative artist passionate about bringing visions to life.</p>
+        <div class="profile-stats">
+          <div class="stat">
+            <span class="stat-num">248</span>
+            <span class="stat-label">Followers</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">156</span>
+            <span class="stat-label">Following</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">42</span>
+            <span class="stat-label">Artworks</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">$12.5K</span>
+            <span class="stat-label">Earnings</span>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="edit-profile-btn" onclick="openEditProfile()"><i class="fas fa-edit"></i> Edit Profile</button>
+          <button class="share-profile-btn"><i class="fas fa-share-alt"></i> Share</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="profile-tabs">
+    <button class="tab-btn active" onclick="showProfileTab('artworks')">Artworks</button>
+    <button class="tab-btn" onclick="showProfileTab('collections')">Collections</button>
+    <button class="tab-btn" onclick="showProfileTab('about')">About</button>
+    <button class="tab-btn" onclick="showProfileTab('connections')">Connections</button>
+  </div>
+  
+  <div class="profile-content">
+    <div id="profileArtworks" class="profile-tab active">
+      <div class="artworks-grid">
+        <div class="artwork-item">
+          <img src="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?w=400" alt="Artwork">
+          <div class="artwork-overlay">
+            <h4>My Creation</h4>
+            <span>$1,200</span>
+          </div>
+        </div>
+        <div class="artwork-item">
+          <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=400" alt="Artwork">
+          <div class="artwork-overlay">
+            <h4>Sunset</h4>
+            <span>$800</span>
+          </div>
+        </div>
+        <div class="artwork-item">
+          <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400" alt="Artwork">
+          <div class="artwork-overlay">
+            <h4>Digital Dreams</h4>
+            <span>$650</span>
+          </div>
+        </div>
+        <div class="artwork-item">
+          <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400" alt="Artwork">
+          <div class="artwork-overlay">
+            <h4>Mountain View</h4>
+            <span>$950</span>
+          </div>
+        </div>
+        <div class="artwork-item">
+          <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=400" alt="Artwork">
+          <div class="artwork-overlay">
+            <h4>City Lights</h4>
+            <span>$1,100</span>
+          </div>
+        </div>
+        <div class="artwork-item add-new">
+          <i class="fas fa-plus"></i>
+          <span>Add Artwork</span>
+        </div>
+      </div>
+    </div>
+    
+    <div id="profileCollections" class="profile-tab">
+      <div class="collections-grid">
+        <div class="collection-card">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=300" alt="Collection">
+          <div class="collection-info">
+            <h4>Abstract Series</h4>
+            <p>12 artworks</p>
+          </div>
+        </div>
+        <div class="collection-card">
+          <img src="https://images.unsplash.com/photo-1549887534-1541e9326642?w=300" alt="Collection">
+          <div class="collection-info">
+            <h4>Nature Inspired</h4>
+            <p>8 artworks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="profileAbout" class="profile-tab">
+      <div class="about-section">
+        <h3>Biography</h3>
+        <p id="profileAboutText">Creative artist with a passion for bringing visions to life. Specializing in contemporary art with a modern twist.</p>
+        
+        <h3>Skills</h3>
+        <div class="skills-list">
+          <span class="skill-tag">Oil Painting</span>
+          <span class="skill-tag">Digital Art</span>
+          <span class="skill-tag">Illustration</span>
+          <span class="skill-tag">Photography</span>
+        </div>
+        
+        <h3>Contact</h3>
+        <div class="contact-info">
+          <p><i class="fas fa-envelope"></i> email@example.com</p>
+          <p><i class="fas fa-globe"></i> www.yourwebsite.com</p>
+          <p><i class="fab fa-instagram"></i> @yourhandle</p>
+        </div>
+      </div>
+    </div>
+    
+    <div id="profileConnections" class="profile-tab">
+      <div class="connections-header">
+        <h3>My Connections</h3>
+        <button class="find-connections-btn"><i class="fas fa-user-plus"></i> Find More</button>
+      </div>
+      <div class="connections-grid">
+        <div class="connection-card">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+          <h4>Emma Richardson</h4>
+          <p>Digital Artist</p>
+          <button class="message-btn"><i class="fas fa-envelope"></i> Message</button>
+        </div>
+        <div class="connection-card">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+          <h4>Marcus Chen</h4>
+          <p>3D Artist</p>
+          <button class="message-btn"><i class="fas fa-envelope"></i> Message</button>
+        </div>
+        <div class="connection-card">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User">
+          <h4>Isabella Martinez</h4>
+          <p>Art Collector</p>
+          <button class="message-btn"><i class="fas fa-envelope"></i> Message</button>
+        </div>
+        <div class="connection-card">
+          <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User">
+          <h4>David Kim</h4>
+          <p>Illustrator</p>
+          <button class="message-btn"><i class="fas fa-envelope"></i> Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AI ASSISTANT ================= -->
+<div id="aiAssistant" class="ai-assistant" style="display:none;">
+  <div class="ai-header" onclick="toggleAIAssistant()">
+    <div class="ai-title">
+      <i class="fas fa-robot"></i>
+      <span>DKANAN AI Assistant</span>
+    </div>
+    <button class="ai-close"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="ai-messages" id="aiMessages">
+    <div class="ai-message bot">
+      <p>Hello! I'm your AI assistant. I can help you with:</p>
+      <ul>
+        <li>Finding art inspiration</li>
+        <li>Pricing your artwork</li>
+        <li>Marketing tips</li>
+        <li>Technical questions</li>
+      </ul>
+      <p>How can I help you today?</p>
+    </div>
+  </div>
+  <div class="ai-input">
+    <input type="text" placeholder="Ask me anything..." id="aiInput" onkeypress="handleAIInput(event)">
+    <button onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- ================= AUTH MODAL ================= -->
+<div id="authModal" class="modal">
+  <div class="auth-modal-box">
+    <span class="close" onclick="closeAuthModal()">×</span>
+    
+    <div class="auth-header">
+      <h2 id="authTitle">Welcome to DKANAN</h2>
+      <p>Join our creative community</p>
+    </div>
+    
+    <div class="role-selection">
+      <p>Select your role:</p>
+      <div class="role-options">
+        <label class="role-option">
+          <input type="radio" name="userRole" value="artist" checked>
+          <div class="role-box">
+            <i class="fas fa-palette"></i>
+            <span>Artist</span>
+          </div>
+        </label>
+        <label class="role-option">
+          <input type="radio" name="userRole" value="creator">
+          <div class="role-box">
+            <i class="fas fa-lightbulb"></i>
+            <span>Creator</span>
+          </div>
+        </label>
+        <label class="role-option">
+          <input type="radio" name="userRole" value="buyer">
+          <div class="role-box">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Buyer</span>
+          </div>
+        </label>
+        <label class="role-option">
+          <input type="radio" name="userRole" value="visitor">
+          <div class="role-box">
+            <i class="fas fa-eye"></i>
+            <span>Visitor</span>
+          </div>
+        </label>
+      </div>
+    </div>
+    
+    <div class="auth-form">
+      <input type="text" id="authName" placeholder="Full Name">
+      <input type="email" id="authEmail" placeholder="Email Address">
+      <input type="password" id="authPassword" placeholder="Password">
+      <input type="password" id="authConfirmPassword" placeholder="Confirm Password">
+      
+      <div class="verification-code" style="display:none;">
+        <input type="text" id="verificationCode" placeholder="Enter 6-digit code">
+        <p class="code-sent">Code sent to your email</p>
+      </div>
+      
+      <button class="auth-submit" id="authSubmitBtn" onclick="handleAuth()">
+        <span id="authBtnText">Create Account</span>
+      </button>
+      
+      <div class="auth-divider">
+        <span>or continue with</span>
+      </div>
+      
+      <div class="social-login">
+        <button class="social-btn google" onclick="socialLogin('google')">
+          <i class="fab fa-google"></i> Google
+        </button>
+        <button class="social-btn facebook" onclick="socialLogin('facebook')">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </button>
+      </div>
+      
+      <p class="auth-switch">
+        <span id="authSwitchText">Already have an account?</span>
+        <a href="#" onclick="toggleAuthMode()" id="authSwitchLink">Login</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MEMBERSHIP TIERS SECTION ================= -->
+<section id="membershipSection" class="section-container" style="display:none;">
+  <div class="section-header">
+    <h2><i class="fas fa-crown"></i> Choose Your Plan</h2>
+    <p>Unlock your creative potential with premium membership</p>
+  </div>
+  
+  <div class="device-toggle">
+    <span>Current: <strong id="currentDevice">Desktop</strong></span>
+    <button class="device-btn" onclick="toggleDeviceMode()">
+      <i class="fas fa-desktop"></i> Switch to Desktop Mode
+    </button>
+  </div>
+  
+  <div class="membership-grid" id="membershipGrid">
+    <!-- Free Tier -->
+    <div class="membership-card free">
+      <div class="tier-badge">Free</div>
+      <div class="tier-icon"><i class="fas fa-user"></i></div>
+      <h3>Starter</h3>
+      <p class="tier-price">$0<span>/month</span></p>
+      <ul class="tier-features">
+        <li><i class="fas fa-check"></i> Basic profile</li>
+        <li><i class="fas fa-check"></i> Up to 10 artworks</li>
+        <li><i class="fas fa-check"></i> Community access</li>
+        <li><i class="fas fa-check"></i> Basic search</li>
+        <li><i class="fas fa-check"></i> Standard support</li>
+        <li class="disabled"><i class="fas fa-times"></i> AI tools</li>
+        <li class="disabled"><i class="fas fa-times"></i> Priority listing</li>
+        <li class="disabled"><i class="fas fa-times"></i> Analytics</li>
+      </ul>
+      <button class="tier-btn current" onclick="showCurrentPlan()">Current Plan</button>
+    </div>
+    
+    <!-- Premium Tier -->
+    <div class="membership-card premium">
+      <div class="tier-badge popular">Most Popular</div>
+      <div class="tier-icon"><i class="fas fa-star"></i></div>
+      <h3>Premium</h3>
+      <p class="tier-price">$19<span>/month</span></p>
+      <ul class="tier-features">
+        <li><i class="fas fa-check"></i> Enhanced profile</li>
+        <li><i class="fas fa-check"></i> Unlimited artworks</li>
+        <li><i class="fas fa-check"></i> Full community access</li>
+        <li><i class="fas fa-check"></i> Advanced search</li>
+        <li><i class="fas fa-check"></i> Priority support</li>
+        <li><i class="fas fa-check"></i> AI assistant tools</li>
+        <li><i class="fas fa-check"></i> Priority listing</li>
+        <li class="disabled"><i class="fas fa-times"></i> Analytics dashboard</li>
+      </ul>
+      <button class="tier-btn" onclick="openPaymentModal('premium')">Upgrade to Premium</button>
+    </div>
+    
+    <!-- Advanced Tier -->
+    <div class="membership-card advanced">
+      <div class="tier-badge">Professional</div>
+      <div class="tier-icon"><i class="fas fa-gem"></i></div>
+      <h3>Advanced</h3>
+      <p class="tier-price">$49<span>/month</span></p>
+      <ul class="tier-features">
+        <li><i class="fas fa-check"></i> Pro profile with badge</li>
+        <li><i class="fas fa-check"></i> Unlimited artworks</li>
+        <li><i class="fas fa-check"></i> VIP community access</li>
+        <li><i class="fas fa-check"></i> Advanced search & filters</li>
+        <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
+        <li><i class="fas fa-check"></i> Full AI suite</li>
+        <li><i class="fas fa-check"></i> Featured listings</li>
+        <li><i class="fas fa-check"></i> Analytics dashboard</li>
+      </ul>
+      <button class="tier-btn" onclick="openPaymentModal('advanced')">Upgrade to Advanced</button>
+    </div>
+  </div>
+  
+  <div class="tier-comparison">
+    <h3><i class="fas fa-table"></i> Compare Plans</h3>
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Starter</th>
+            <th>Premium</th>
+            <th>Advanced</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Profile</td>
+            <td>Basic</td>
+            <td>Enhanced</td>
+            <td>Pro + Badge</td>
+          </tr>
+          <tr>
+            <td>Artworks</td>
+            <td>10</td>
+            <td>Unlimited</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td>AI Tools</td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-check"></i></td>
+            <td><i class="fas fa-check"></i></td>
+          </tr>
+          <tr>
+            <td>Commission Fee</td>
+            <td>15%</td>
+            <td>10%</td>
+            <td>5%</td>
+          </tr>
+          <tr>
+            <td>Analytics</td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-times"></i></td>
+            <td><i class="fas fa-check"></i></td>
+          </tr>
+          <tr>
+            <td>Support</td>
+            <td>Standard</td>
+            <td>Priority</td>
+            <td>24/7 Dedicated</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAYMENT MODAL ================= -->
+<div id="paymentModal" class="modal">
+  <div class="payment-modal-box">
+    <span class="close" onclick="closePaymentModal()">×</span>
+    
+    <div class="payment-header">
+      <div class="payment-secure">
+        <i class="fas fa-shield-alt"></i>
+        <span>Secure Payment</span>
+      </div>
+      <h2 id="paymentTitle">Upgrade to Premium</h2>
+      <p id="paymentSubtitle">Unlock premium features</p>
+    </div>
+    
+    <div class="payment-plan-summary">
+      <div class="plan-details">
+        <span class="plan-name" id="planName">Premium</span>
+        <span class="plan-price" id="planPrice">$19/month</span>
+      </div>
+      <div class="plan-features-preview" id="planFeaturesPreview">
+        <ul>
+          <li><i class="fas fa-check"></i> Unlimited artworks</li>
+          <li><i class="fas fa-check"></i> AI assistant tools</li>
+          <li><i class="fas fa-check"></i> Priority listing</li>
+        </ul>
+      </div>
+    </div>
+    
+    <form id="paymentForm" class="payment-form" onsubmit="processPayment(event)">
+      <div class="form-group">
+        <label><i class="fas fa-user"></i> Cardholder Name</label>
+        <input type="text" id="cardName" placeholder="Name on card" required>
+      </div>
+      
+      <div class="form-group">
+        <label><i class="fas fa-credit-card"></i> Card Number</label>
+        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label><i class="fas fa-calendar"></i> Expiry Date</label>
+          <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-lock"></i> CVV</label>
+          <input type="text" id="cardCvv" placeholder="123" maxlength="4" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label><i class="fas fa-envelope"></i> Billing Email</label>
+        <input type="email" id="billingEmail" placeholder="your@email.com" required>
+      </div>
+      
+      <div class="payment-security-badges">
+        <span><i class="fas fa-lock"></i> SSL Encrypted</span>
+        <span><i class="fas fa-shield-virus"></i> PCI DSS Compliant</span>
+        <span><i class="fas fa-check-circle"></i> Verified</span>
+      </div>
+      
+      <button type="submit" class="payment-submit" id="paymentSubmitBtn">
+        <i class="fas fa-lock"></i> Pay <span id="paymentAmount">$19</span>
+      </button>
+      
+      <p class="payment-disclaimer">
+        By clicking Pay, you agree to our Terms of Service. Your subscription will auto-renew monthly until cancelled.
+      </p>
+    </form>
+    
+    <div class="payment-methods">
+      <p>Accepted payment methods</p>
+      <div class="payment-icons">
+        <i class="fab fa-cc-visa"></i>
+        <i class="fab fa-cc-mastercard"></i>
+        <i class="fab fa-cc-amex"></i>
+        <i class="fab fa-cc-discover"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= DEVICE MODE TOGGLE ================= -->
+<div class="device-mode-indicator" id="deviceModeIndicator" style="display:none;">
+  <i class="fas fa-mobile-alt"></i>
+  <span>Mobile View</span>
+  <button onclick="switchToDesktop()">Switch to Desktop</button>
+</div>
+<div class="chat-widget" onclick="toggleChatWidget()">
+  <i class="fas fa-comments"></i>
+  <span class="chat-badge">3</span>
+</div>
+
+<div id="chatWidget" class="chat-container" style="display:none;">
+  <div class="chat-header">
+    <h4><i class="fas fa-users"></i> Community Chat</h4>
+    <button onclick="toggleChatWidget()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-message received">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+      <div class="message-content">
+        <p>Hey everyone! Just uploaded new artwork 🎨</p>
+        <span class="message-time">2:30 PM</span>
+      </div>
+    </div>
+    <div class="chat-message received">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+      <div class="message-content">
+        <p>Looks amazing! What's the medium?</p>
+        <span class="message-time">2:32 PM</span>
+      </div>
+    </div>
+    <div class="chat-message sent">
+      <div class="message-content">
+        <p>Oil on canvas! 24x36 inches</p>
+        <span class="message-time">2:35 PM</span>
+      </div>
+    </div>
+  </div>
+  <div class="chat-input-area">
+    <input type="text" placeholder="Type a message..." id="chatWidgetInput">
+    <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <img src="assets/logo_bight_colour.png" class="footer-logo" alt="DKANAN">
+      <p>Empowering artists worldwide to connect, create, and succeed.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Platform</h4>
+      <a href="#" onclick="showSection('exhibition')">Exhibition</a>
+      <a href="#" onclick="showSection('marketplace')">Marketplace</a>
+      <a href="#" onclick="showSection('community')">Community</a>
+      <a href="#" onclick="showSection('news')">Art News</a>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Opportunities</h4>
+      <a href="#" onclick="showSection('commissions')">Commissions</a>
+      <a href="#" onclick="showSection('jobs')">Jobs</a>
+      <a href="#">Tenders</a>
+      <a href="#">Grants</a>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Newsletter</h4>
+      <p>Get art news and updates</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email">
+        <button><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2026 DKANAN. All Rights Reserved.</p>
+    <p>Made with <i class="fas fa-heart"></i> for artists worldwide</p>
+  </div>
+</footer>
+
+<script type="module">
+// Firebase Imports
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  updateProfile
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { 
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyCKnMLol91cOH1pE977ov4k2iwHXmDmitg",
+  authDomain: "dkanan-a7ffc.firebaseapp.com",
+  projectId: "dkanan-a7ffc",
+  storageBucket: "dkanan-a7ffc.firebasestorage.app",
+  messagingSenderId: "160205470414",
+  appId: "1:160205470414:web:f4e45e5d44651b6b03ae9f"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+console.log("Firebase connected ✅");
+
+// User State
+let currentUser = null;
+let userRole = 'visitor';
+let authMode = 'signup';
+
+// UI Functions
+window.showSection = function(section) {
+  const sections = ['home', 'exhibition', 'marketplace', 'community', 'news', 'commissions', 'jobs', 'profile'];
+  sections.forEach(s => {
+    const el = document.getElementById(s + 'Section');
+    if (el) el.style.display = 'none';
+  });
+  
+  const target = document.getElementById(section + 'Section');
+  if (target) {
+    target.style.display = 'block';
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+// Auth Modal
+window.openAuthModal = function(mode) {
+  authMode = mode;
+  document.getElementById('authModal').style.display = 'flex';
+  document.getElementById('authTitle').innerText = mode === 'login' ? 'Welcome Back' : 'Join DKANAN';
+  document.getElementById('authBtnText').innerText = mode === 'login' ? 'Login' : 'Create Account';
+  document.getElementById('authSwitchText').innerText = mode === 'login' ? "Don't have an account?" : "Already have an account?";
+  document.getElementById('authSwitchLink').innerText = mode === 'login' ? 'Sign Up' : 'Login';
+};
+
+window.closeAuthModal = function() {
+  document.getElementById('authModal').style.display = 'none';
+};
+
+window.toggleAuthMode = function() {
+  authMode = authMode === 'login' ? 'signup' : 'login';
+  openAuthModal(authMode);
+};
+
+window.handleAuth = async function() {
+  const email = document.getElementById('authEmail').value;
+  const password = document.getElementById('authPassword').value;
+  const name = document.getElementById('authName').value;
+  
+  const roleRadio = document.querySelector('input[name="userRole"]:checked');
+  userRole = roleRadio ? roleRadio.value : 'visitor';
+  
+  if (!email || !password) {
+    alert('Please fill in all fields');
+    return;
+  }
+  
+  if (authMode === 'signup' && password.length < 6) {
+    alert('Password must be at least 6 characters');
+    return;
+  }
+  
+  try {
+    if (authMode === 'signup') {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, { displayName: name });
+      alert('Account created successfully! ✅');
+    } else {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert('Login successful! 🚀');
+    }
+    
+    closeAuthModal();
+    updateUIForAuth();
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
+window.logoutUser = async function() {
+  try {
+    await signOut(auth);
+    alert('Logged out successfully');
+    updateUIForAuth();
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
+window.socialLogin = function(provider) {
+  alert('Social login coming soon!');
+};
+
+function updateUIForAuth() {
+  const authButtons = document.getElementById('authButtons');
+  const logoutBtn = document.querySelector('.logout-btn');
+  const profileBtn = document.querySelector('.profile-btn');
+  
+  if (currentUser) {
+    authButtons.style.display = 'none';
+    logoutBtn.style.display = 'inline-block';
+    profileBtn.style.display = 'inline-block';
+    
+    if (document.getElementById('profileName')) {
+      document.getElementById('profileName').innerText = currentUser.displayName || 'User';
+      document.getElementById('profileRole').innerText = userRole.charAt(0).toUpperCase() + userRole.slice(1);
+    }
+  } else {
+    authButtons.style.display = 'inline-block';
+    logoutBtn.style.display = 'none';
+    profileBtn.style.display = 'none';
+  }
+}
+
+onAuthStateChanged(auth, (user) => {
+  currentUser = user;
+  updateUIForAuth();
+});
+
+window.filterExhibition = function(category) {
+  const items = document.querySelectorAll('.exhibition-item');
+  const buttons = document.querySelectorAll('.exhibition-filters .filter-btn');
+  
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  items.forEach(item => {
+    if (category === 'all' || item.dataset.category === category) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+};
+
+window.filterMarketplace = function(category) {
+  console.log('Filtering:', category);
+};
+
+window.sortMarketplace = function(sort) {
+  console.log('Sorting:', sort);
+};
+
+window.openArtworkDetail = function(id) {
+  alert('Opening artwork details for ID: ' + id);
+};
+
+window.showCommunityTab = function(tab) {
+  const tabs = document.querySelectorAll('#communitySection .community-tab');
+  const buttons = document.querySelectorAll('#communitySection .tab-btn');
+  
+  tabs.forEach(t => t.classList.remove('active'));
+  buttons.forEach(b => b.classList.remove('active'));
+  
+  document.getElementById(tab + 'Tab').classList.add('active');
+  event.target.classList.add('active');
+};
+
+window.createPost = function() {
+  const content = document.getElementById('postContent').value;
+  if (!content.trim()) {
+    alert('Please write something to post');
+    return;
+  }
+  alert('Post created successfully!');
+  document.getElementById('postContent').value = '';
+};
+
+window.showCommissionsTab = function(tab) {
+  const tabs = document.querySelectorAll('#commissionsSection .commissions-tab');
+  const buttons = document.querySelectorAll('#commissionsSection .tab-btn');
+  
+  tabs.forEach(t => t.classList.remove('active'));
+  buttons.forEach(b => b.classList.remove('active'));
+  
+  if (tab === 'open') {
+    document.getElementById('openCommissions').classList.add('active');
+    buttons[0].classList.add('active');
+  } else if (tab === 'requests') {
+    document.getElementById('requestsTab').classList.add('active');
+    buttons[1].classList.add('active');
+  } else {
+    document.getElementById('tendersTab').classList.add('active');
+    buttons[2].classList.add('active');
+  }
+};
+
+window.showProfileTab = function(tab) {
+  const tabs = document.querySelectorAll('#profileSection .profile-tab');
+  const buttons = document.querySelectorAll('#profileSection .tab-btn');
+  
+  tabs.forEach(t => t.classList.remove('active'));
+  buttons.forEach(b => b.classList.remove('active'));
+  
+  document.getElementById('profile' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
+  event.target.classList.add('active');
+};
+
+window.openEditProfile = function() {
+  alert('Edit profile modal opening...');
+};
+
+window.toggleAIAssistant = function() {
+  const ai = document.getElementById('aiAssistant');
+  ai.style.display = ai.style.display === 'none' ? 'flex' : 'none';
+};
+
+window.handleAIInput = function(event) {
+  if (event.key === 'Enter') {
+    sendAIMessage();
+  }
+};
+
+window.sendAIMessage = function() {
+  const input = document.getElementById('aiInput');
+  const message = input.value.trim();
+  if (!message) return;
+  
+  const messages = document.getElementById('aiMessages');
+  
+  const userMsg = document.createElement('div');
+  userMsg.className = 'ai-message user';
+  userMsg.innerHTML = `<p>${message}</p>`;
+  messages.appendChild(userMsg);
+  
+  input.value = '';
+  messages.scrollTop = messages.scrollHeight;
+  
+  setTimeout(() => {
+    const botMsg = document.createElement('div');
+    botMsg.className = 'ai-message bot';
+    botMsg.innerHTML = `<p>Thank you for your question! I'm analyzing...</p><p>Based on your query about "${message}", here are some suggestions:</p><ul><li>Consider exploring different artistic styles</li><li>Research current market trends</li><li>Connect with other artists in the community</li></ul><p>Would you like more specific guidance?</p>`;
+    messages.appendChild(botMsg);
+    messages.scrollTop = messages.scrollHeight;
+  }, 1000);
+};
+
+window.toggleChatWidget = function() {
+  const chat = document.getElementById('chatWidget');
+  chat.style.display = chat.style.display === 'none' ? 'flex' : 'none';
+};
+
+window.sendChatMessage = function() {
+  const input = document.getElementById('chatWidgetInput');
+  const message = input.value.trim();
+  if (!message) return;
+  
+  const messages = document.getElementById('chatMessages');
+  
+  const msgDiv = document.createElement('div');
+  msgDiv.className = 'chat-message sent';
+  msgDiv.innerHTML = `<div class="message-content"><p>${message}</p><span class="message-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span></div>`;
+  messages.appendChild(msgDiv);
+  
+  input.value = '';
+  messages.scrollTop = messages.scrollHeight;
+};
+
+window.toggleMobileMenu = function() {
+  document.querySelector('.nav-right').classList.toggle('mobile-active');
+};
+
+console.log('DKANAN Platform Loaded ✅');
+</script>
+
+<!-- ================= MODULE SCRIPTS ================= -->
+<script src="config/firebase.js"></script>
+<script src="js/modules/auth.js"></script>
+<script src="js/modules/profile.js"></script>
+<script src="js/modules/marketplace.js"></script>
+<script src="js/modules/chat.js"></script>
+<script src="js/modules/community.js"></script>
+<script src="js/modules/discovery.js"></script>
+<script src="js/modules/matching.js"></script>
+<script src="js/modules/ai-assistant.js"></script>
+<script src="js/modules/social.js"></script>
+<script src="js/modules/notifications.js"></script>
+<script src="js/modules/library.js"></script>
+<script src="js/modules/games.js"></script>
+
+</body>
+</html>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+<div id="loginModal" class="modal">
+   <div class="modal-box">
+
+      <span class="close" onclick="closeLogin()">×</span>
+
+      <h2>Welcome Back</h2>
+
+      <input type="email" id="email" placeholder="Enter Email"><br><br>
+      <input type="password" id="password" placeholder="Enter Password"><br><br>
+
+      <button onclick="signupUser()">Create Account</button>
+      <button onclick="loginUser()">Login</button>
+
+   </div>
+</div>
+
+
+<!-- ================= PREVIEW ================= -->
+<section id="previewSection" class="preview">
+
+  <h2>🔒 Unlock DKANAN</h2>
+  <p>
+    Login to access premium features like Chat, Marketplace & AI Tools
+  </p>
+<button onclick="openLogin()">Signup</button>
+<button onclick="openLogin()">Login</button>
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+<section id="featuresSection" class="features" style="display:none;">
+
+  <h2>Platform Features</h2>
+
+  <div class="feature-grid">
+
+    <div class="feature-card">🎨 Showcase Art</div>
+    <div class="feature-card">🌍 Global Network</div>
+    <div class="feature-card">💰 Sell & Earn</div>
+    <div class="feature-card">🤖 AI Tools</div>
+    <div class="feature-card" onclick="openChat()">💬 Artist Chat</div>
+    <div class="feature-card">🛒 Marketplace</div>
+
+  </div>
+
+</section>
+<section id="chatSection" style="display:none; padding:40px;">
+    <h2 style="text-align:center; color:#FFD700;">Artist Community Chat</h2>
+
+    <div id="chatBox" style="
+        max-width:600px;
+        margin:20px auto;
+        height:300px;
+        overflow-y:auto;
+        background:#111;
+        padding:15px;
+        border-radius:10px;
+    ">
+    </div>
+
+    <div style="text-align:center; margin-top:15px;">
+        <input id="chatInput" type="text" placeholder="Type message..." 
+        style="padding:10px; width:60%; border-radius:5px; border:none;">
+
+        <button onclick="sendMessage()" 
+        style="padding:10px 20px; background:#FFD700; border:none; border-radius:5px;">
+        Send
+        </button>
+    </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="aboutSection" class="about">
+
+  <div class="about-content">
+    <p>DKANAN connects artists and buyers globally.</p>
+    <p>Designed for exposure, collaboration and income growth.</p>
+  </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <p>© 2026 DKANAN. All Rights Reserved.</p>
+</footer>
+
+<script type="module">
+// 🔥 Firebase Imports
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { 
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+// Import the functions you need from the SDKs you need
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCKnMLol91cOH1pE977ov4k2iwHXmDmitg",
+  authDomain: "dkanan-a7ffc.firebaseapp.com",
+  projectId: "dkanan-a7ffc",
+  storageBucket: "dkanan-a7ffc.firebasestorage.app",
+  messagingSenderId: "160205470414",
+  appId: "1:160205470414:web:f4e45e5d44651b6b03ae9f"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+console.log("Firebase connected ✅");
+
+// User State
+let currentUser = null;
+let userRole = 'visitor';
+let authMode = 'signup';
+
+// UI Functions
+window.showSection = function(section) {
+  const sections = ['home', 'exhibition', 'marketplace', 'community', 'news', 'commissions', 'jobs', 'profile'];
+  sections.forEach(s => {
+    const el = document.getElementById(s + 'Section');
+    if (el) el.style.display = 'none';
+  });
+  
+  const target = document.getElementById(section + 'Section');
+  if (target) {
+    target.style.display = 'block';
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+// Auth Modal
+window.openAuthModal = function(mode) {
+  authMode = mode;
+  document.getElementById('authModal').style.display = 'flex';
+  document.getElementById('authTitle').innerText = mode === 'login' ? 'Welcome Back' : 'Join DKANAN';
+  document.getElementById('authBtnText').innerText = mode === 'login' ? 'Login' : 'Create Account';
+  document.getElementById('authSwitchText').innerText = mode === 'login' ? "Don't have an account?" : "Already have an account?";
+  document.getElementById('authSwitchLink').innerText = mode === 'login' ? 'Sign Up' : 'Login';
+};
+
+window.closeAuthModal = function() {
+  document.getElementById('authModal').style.display = 'none';
+};
+
+window.toggleAuthMode = function() {
+  authMode = authMode === 'login' ? 'signup' : 'login';
+  openAuthModal(authMode);
+};
+
+window.handleAuth = async function() {
+  const email = document.getElementById('authEmail').value;
+  const password = document.getElementById('authPassword').value;
